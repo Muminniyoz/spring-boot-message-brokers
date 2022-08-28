@@ -9,9 +9,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProductOrderListener {
 
-    @JmsListener(destination = "${activemq.topic.product-inform}", containerFactory = JmsConfig.JMS_LISTENER_BEAN_NAME)
+    @JmsListener(destination = "Consumer.consumer1.VirtualTopic.${activemq.topic.product-inform}", containerFactory = JmsConfig.JMS_LISTENER_BEAN_NAME)
     public void receiveOrder(@Payload Order order){
-
         System.out.println("Order: "+order.getId());
     }
 }
