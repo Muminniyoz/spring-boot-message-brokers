@@ -1,8 +1,8 @@
-Homework #ACITVEMQ-1
+<h1>Homework #ACITVEMQ-1</h1>
 
-1. Run gateway app
+1. Run gateway app <br>
    gateway application sent order to order app in every 3s
-2. run order app
+2. run order app <br>
    order app receive order details and send to activemq message to product to reduce product
-3. run product app
-   product app recieve order details and reduce product in database
+3. run product app <br>
+   product app reciee order details and reduce product in database
