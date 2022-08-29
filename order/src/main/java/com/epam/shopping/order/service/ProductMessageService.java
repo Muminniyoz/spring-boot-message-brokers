@@ -16,6 +16,7 @@ import java.util.UUID;
 
 @Service
 public class ProductMessageService {
+    Logger logger = LoggerFactory.getLogger(ProductMessageService.class.getName());
 
     Logger logger = LoggerFactory.getLogger(ProductMessageService.class);
     @Autowired
@@ -24,6 +25,7 @@ public class ProductMessageService {
 
     @Value("${activemq.queue.product-inform}")
     private String productInformTopic;
+<<<<<<< HEAD
 
     @Autowired
     Session session;
@@ -58,6 +60,12 @@ public class ProductMessageService {
         public void onMessage(Message message) {
             logger.info("Message come to MessageRecieiver: "+message);
         }
+=======
+    public void sendOrderInfoToProductService(Order order){
+
+        jmsTemplate.convertAndSend("VirtualTopic."+productInformTopic, order);
+        logger.info("Message send: " + order.getId());
+>>>>>>> 7d75613f10ec15282056a16cbb176295ffc9118c
     }
 
 

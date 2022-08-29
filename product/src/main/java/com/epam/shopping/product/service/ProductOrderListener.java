@@ -18,6 +18,7 @@ import javax.jms.TextMessage;
 @Component
 public class ProductOrderListener {
 
+<<<<<<< HEAD
     Logger logger = LoggerFactory.getLogger(ProductOrderListener.class);
     @Autowired
     Session session;
@@ -44,5 +45,10 @@ public class ProductOrderListener {
         } catch (Exception ex){
             logger.error(ex.getMessage(), ex);
         }
+=======
+    @JmsListener(destination = "Consumer.consumer1.VirtualTopic.${activemq.topic.product-inform}", containerFactory = JmsConfig.JMS_LISTENER_BEAN_NAME)
+    public void receiveOrder(@Payload Order order){
+        System.out.println("Order: "+order.getId());
+>>>>>>> 7d75613f10ec15282056a16cbb176295ffc9118c
     }
 }
