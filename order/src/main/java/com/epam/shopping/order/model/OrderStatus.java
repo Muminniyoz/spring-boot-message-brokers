@@ -1,6 +1,9 @@
 package com.epam.shopping.order.model;
 
-public enum OrderStatus {
+import java.io.Serializable;
+
+public enum OrderStatus implements Serializable {
+
     NEW,
     FINISHED,
     CANCELED

@@ -1,9 +1,11 @@
 package com.epam.shopping.order.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Order {
+public class Order implements Serializable {
+    public static Long serialVersionId=1L;
     private Long id;
     private LocalDateTime date;
     private String info;

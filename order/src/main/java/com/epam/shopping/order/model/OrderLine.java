@@ -1,6 +1,9 @@
 package com.epam.shopping.order.model;
 
-public class OrderLine {
+import java.io.Serializable;
+
+public class OrderLine implements Serializable {
+    public static Long serialVersionId=1L;
     private Long id;
     private Long productId;
     private Float amount;
