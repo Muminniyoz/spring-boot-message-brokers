@@ -2,6 +2,7 @@ package com.epam.shopping.order.service;
 
 import com.epam.shopping.order.model.Order;
 import com.epam.shopping.order.model.OrderLine;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class OrderService {
     private Long lastOrderLineId = 0L;
 
     @Autowired
-    private ProductMessageService productMessageService;
+    OrderMessagingService orderMessagingService;
 
     public Order create(Order order){
         if(order.getOrderLines() == null) throw new NullPointerException("Order linews should not be null");
@@ -27,7 +28,7 @@ public class OrderService {
         order.setId(lastOrderId++);
         order.setTotalPrice((float) totalPrice);
         database.add(order);
-        productMessageService.sendOrderInfoToProductService(order);
+        orderMessagingService.sendOrderMessage(order);
         return order;
     }
 }

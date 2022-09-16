@@ -1,0 +1,48 @@
+
+#activemq.topic.product-inform=product.order.inform
+management:
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+spring:
+    application:
+        name: shopping-product-order
+    rabbitmq:
+        host: 127.0.0.1
+        port: 5672
+        username: guest
+        password: guest
+        virtualhost: homework
+        listener:
+            simple:
+                default-requeue-rejected: false
+#            retry:
+#                enabled: true
+#                initial-interval: 3s
+#                max-attempts: 3
+#                max-interval: 10s
+#                multiplier: 2
+server:
+    port: 0
+
+eureka:
+    client:
+        registerWithEureka: true
+        fetchRegistry: true
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka
+    instance:
+        preferIpAddress: true
+        leaseRenewalIntervalInSeconds: 1
+        leaseExpirationDurationInSeconds: 1
+        metadataMap:
+            instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+        instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+app:
+    rabbitmq:
+        order:
+            exchange: order.exchange
+            queue: order.queue
+            routingKey: order.routingKey

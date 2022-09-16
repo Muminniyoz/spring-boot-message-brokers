@@ -1,4 +1,4 @@
-package com.epam.shopping.payment;
+package com.epam.shopping.notification;
 
 import static org.junit.Assert.assertTrue;
 

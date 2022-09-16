@@ -32,7 +32,7 @@ public class ScheduledTest {
         orderLines.add(new OrderLine(1L, 5L, 1.4F, 12000F, null));
         order.setOrderLines(orderLines);
         try{
-            Order o = restTemplate.postForEntity("http://localhost:8081/api/order", order, Order.class).getBody();
+            Order o = restTemplate.postForEntity("http://shopping-product-order/api/order", order, Order.class).getBody();
             assert o != null;
             logger.info("Succesfuly: "+o.getId());
         } catch (Exception ex){
